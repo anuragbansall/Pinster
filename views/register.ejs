@@ -1,0 +1,59 @@
+<% include ./partials/header.ejs %>
+<main
+  class="min-h-screen w-full bg-gray-100 flex justify-center items-center bg-[url('/images/funky-bg-2.jpg')] bg-cover bg-center"
+>
+  <div
+    id="register-form-container"
+    class="min-h-[25rem] flex flex-col justify-center bg-white px-16 py-8 rounded-2xl shadow-lg"
+  >
+    <h2 class="text-3xl font-semibold mb-8">
+      Welcome to <i class="text-red-500">Pinster</i>
+    </h2>
+    <form action="/login" method="post">
+      <div class="flex flex-col mb-2">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="name"
+          placeholder="Username"
+          required
+          class="mt-1 border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300"
+        />
+      </div>
+      <div class="flex flex-col mb-2">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          required
+          class="mt-1 border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300"
+        />
+      </div>
+      <div class="flex flex-col mb-2">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          required
+          class="mt-1 border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300"
+        />
+      </div>
+      <p class="text-sm text-gray-500">
+        Already have an account?
+        <a href="/login" class="text-blue-500"> Log in here </a>
+      </p>
+      <button
+        type="submit"
+        class="w-full bg-red-500 hover:bg-[#E70022] duration-200 text-white p-2 rounded-full mt-4"
+      >
+        Create Account
+      </button>
+    </form>
+  </div>
+</main>
+<% include ./partials/footer.ejs %>
