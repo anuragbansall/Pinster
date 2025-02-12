@@ -6,6 +6,7 @@ var logger = require("morgan");
 const expressSession = require("express-session");
 const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
+require("dotenv").config();
 
 var indexRouter = require("./routes/index");
 const User = require("./models/user");

@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
-  const mongoURL =
-    process.env.MONGO_URI || "mongodb://127.0.0.1:27017/pinster";
+  const mongoURL = process.env.MONGO_URI;
   try {
     const conn = await mongoose.connect(mongoURL);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
