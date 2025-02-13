@@ -42,3 +42,6 @@ coverage/
 # Temporary files
 *.swp
 *.swo
+
+# Public Uploads
+./public/images/uploads/
