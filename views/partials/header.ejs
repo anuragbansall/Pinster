@@ -12,11 +12,11 @@
     <header
       class="flex items-center justify-between text-white bg-zinc-900 px-6 py-4"
     >
-      <h1 class="text-2xl">Pinster</h1>
+      <a href="/" class="text-2xl text-white">Pinster</a>
       <% if(isAuthenticated){ %>
       <nav class="flex gap-6 items-center">
         <a href="/profile">Profile</a>
-        <a href="/feed">Feed</a>
+        <a href="/">Feed</a>
         <a href="/logout" class="bg-red-500 text-white px-4 py-2 rounded-md"
           >Logout</a
         >
@@ -29,3 +29,5 @@
       </nav>
       <% } %>
     </header>
+  </body>
+</html>

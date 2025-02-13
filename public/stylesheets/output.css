@@ -560,6 +560,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .my-1 {
+    margin-block: calc(var(--spacing) * 1);
+  }
   .my-2 {
     margin-block: calc(var(--spacing) * 2);
   }
@@ -574,6 +577,9 @@
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing) * 4);
   }
   .mb-8 {
     margin-bottom: calc(var(--spacing) * 8);
@@ -614,6 +620,9 @@
   .table {
     display: table;
   }
+  .aspect-\[1\/1\.5\] {
+    aspect-ratio: 1/1.5;
+  }
   .aspect-\[1\/1\] {
     aspect-ratio: 1/1;
   }
@@ -632,6 +641,21 @@
   .min-h-screen {
     min-height: 100vh;
   }
+  .w-1 {
+    width: calc(var(--spacing) * 1);
+  }
+  .w-1\/2 {
+    width: calc(1/2 * 100%);
+  }
+  .w-\[5rem\] {
+    width: 5rem;
+  }
+  .w-auto {
+    width: auto;
+  }
+  .w-fit {
+    width: fit-content;
+  }
   .w-full {
     width: 100%;
   }
@@ -647,8 +671,32 @@
   .resize {
     resize: both;
   }
+  .columns-1 {
+    columns: 1;
+  }
+  .columns-4 {
+    columns: 4;
+  }
+  .columns-\[w-fit\] {
+    columns: w-fit;
+  }
+  .break-inside-avoid {
+    break-inside: avoid;
+  }
+  .break-after-column {
+    break-after: column;
+  }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
   .grid-cols-\[repeat\(auto-fill\,minmax\(200px\,1fr\)\)\] {
     grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  }
+  .grid-cols-\[repeat\(auto-fill\,minmax\(250px\,1fr\)\)\] {
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+  }
+  .grid-cols-\[repeat\(auto-fill\,minmax\(300px\,1fr\)\)\] {
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
   }
   .flex-col {
     flex-direction: column;
@@ -757,6 +805,9 @@
   .p-4 {
     padding: calc(var(--spacing) * 4);
   }
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
   .p-10 {
     padding: calc(var(--spacing) * 10);
   }
@@ -797,6 +848,10 @@
   .text-3xl {
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
   }
   .text-sm {
     font-size: var(--text-sm);
@@ -921,6 +976,36 @@
     &:focus {
       --tw-outline-style: none;
       outline-style: none;
+    }
+  }
+  .sm\:columns-2 {
+    @media (width >= 40rem) {
+      columns: 2;
+    }
+  }
+  .sm\:grid-cols-2 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .md\:columns-3 {
+    @media (width >= 48rem) {
+      columns: 3;
+    }
+  }
+  .md\:grid-cols-3 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .lg\:columns-4 {
+    @media (width >= 64rem) {
+      columns: 4;
+    }
+  }
+  .lg\:grid-cols-4 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 }

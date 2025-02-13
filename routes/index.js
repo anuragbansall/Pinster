@@ -6,9 +6,12 @@ const upload = require("../utils/multer");
 const Post = require("../models/post");
 var router = express.Router();
 
-router.get("/", function (req, res, next) {
-  res.render("index", {
+router.get("/", async function (req, res, next) {
+  const posts = await Post.find().populate("user").sort({ createdAt: -1 });
+  console.log(posts);
+  res.render("feed", {
     isAuthenticated: req.isAuthenticated(),
+    posts,
   });
 });
 
