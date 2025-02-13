@@ -2,6 +2,7 @@ var express = require("express");
 const app = require("../app");
 const User = require("../models/user");
 const passport = require("passport");
+const upload = require("../utils/multer");
 var router = express.Router();
 
 router.get("/", function (req, res, next) {
@@ -54,6 +55,34 @@ router.get("/logout", function (req, res, next) {
     }
   });
 });
+
+router.post(
+  "/fileupload",
+  isLoggedIn,
+  upload.single("profilePicture"),
+  function (req, res) {
+    if (!req.file) {
+      console.log("No file uploaded");
+      return res.status(400).send("No file uploaded");
+    }
+
+    console.log("File uploaded:", req.file);
+
+    User.findByIdAndUpdate(
+      req.user._id,
+      { profilePicture: `/images/uploads/${req.file.filename}` },
+      { new: true }
+    )
+      .then((updatedUser) => {
+        console.log("User updated:", updatedUser);
+        res.redirect("/profile");
+      })
+      .catch((err) => {
+        console.error("Error updating user:", err);
+        res.status(500).send("Error updating profile picture");
+      });
+  }
+);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {

@@ -1,5 +1,9 @@
 <%- include('./partials/header.ejs') %>
 <main class="p-10 container mx-auto">
+  <form hidden action="/fileupload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="profilePicture" id="profilePicture" />
+    <button type="submit">Upload</button>
+  </form>
   <section class="mb-12">
     <div class="flex flex-col items-center gap-2">
       <div class="relative">
@@ -12,12 +16,13 @@
             class="object-cover w-full h-full"
           />
         </div>
-        <a
+        <span
+          id="upload-icon"
           href="#"
           class="absolute z-10 bottom-0 right-0 px-4 py-3 border-2 border-white bg-zinc-200 rounded-full cursor-pointer"
         >
           <i class="ri-pencil-line"></i>
-        </a>
+        </span>
       </div>
       <h2 class="text-3xl font-semibold">Anurag Bansal</h2>
       <h3 class="text-xl text-zinc-700">@<%= user.username %></h3>
@@ -52,4 +57,16 @@
     </div>
   </section>
 </main>
+
+<script>
+  document.querySelector("#upload-icon").addEventListener("click", function () {
+    document.querySelector("#profilePicture").click();
+  });
+
+  document
+    .querySelector("#profilePicture")
+    .addEventListener("change", function () {
+      document.querySelector("form").submit();
+    });
+</script>
 <%- include('./partials/footer.ejs') %>
