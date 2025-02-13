@@ -1,0 +1,55 @@
+<%- include('./partials/header.ejs') %>
+
+<main
+  class="min-h-screen w-full bg-gray-100 flex justify-center items-center bg-[url('/images/funky-bg-3.jpg')] bg-cover bg-center"
+>
+  <div
+    id="login-form-container"
+    class="min-h-[25rem] flex flex-col justify-center bg-white px-16 py-8 rounded-2xl shadow-lg"
+  >
+    <h2 class="text-3xl font-semibold mb-8 text-center">
+      Add new <i class="text-red-500">Pinster</i>
+    </h2>
+    <form action="/add" method="post" enctype="multipart/form-data">
+      <div class="flex flex-col mb-2">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Enter Title Here"
+          required
+          class="mt-1 border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300"
+        />
+      </div>
+      <div class="flex flex-col mb-2">
+        <label for="image">Image</label>
+        <input
+          type="file"
+          id="image"
+          name="image"
+          accept="image/*"
+          required
+          class="mt-1 border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300"
+        />
+      </div>
+      <div class="flex flex-col mb-2">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          placeholder="Enter Description Here"
+          required
+          class="mt-1 border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="w-full bg-blue-500 hover:bg-blue-600 duration-200 text-white p-2 rounded-full mt-5 cursor-pointer"
+      >
+        Add New Pinster
+      </button>
+    </form>
+  </div>
+</main>
+<%- include('./partials/footer.ejs') %>

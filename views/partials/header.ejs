@@ -13,6 +13,7 @@
       class="flex items-center justify-between text-white bg-zinc-900 px-6 py-4"
     >
       <h1 class="text-2xl">Pinster</h1>
+      <% if(isAuthenticated){ %>
       <nav class="flex gap-6 items-center">
         <a href="/profile">Profile</a>
         <a href="/feed">Feed</a>
@@ -20,4 +21,11 @@
           >Logout</a
         >
       </nav>
+      <% } else{%>
+      <nav class="flex gap-6 items-center">
+        <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md"
+          >Login</a
+        >
+      </nav>
+      <% } %>
     </header>

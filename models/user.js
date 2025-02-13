@@ -38,6 +38,12 @@ const UserSchema = new mongoose.Schema({
       ref: "Board",
     },
   ],
+  posts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
+    },
+  ],
 });
 
 UserSchema.plugin(plm);

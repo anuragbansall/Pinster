@@ -3,23 +3,40 @@ const app = require("../app");
 const User = require("../models/user");
 const passport = require("passport");
 const upload = require("../utils/multer");
+const Post = require("../models/post");
 var router = express.Router();
 
 router.get("/", function (req, res, next) {
-  res.render("index");
+  res.render("index", {
+    isAuthenticated: req.isAuthenticated(),
+  });
 });
 
 router.get("/login", function (req, res, next) {
-  res.render("login");
+  res.render("login", {
+    isAuthenticated: req.isAuthenticated(),
+  });
 });
 
 router.get("/register", function (req, res, next) {
-  res.render("register");
+  res.render("register", {
+    isAuthenticated: req.isAuthenticated(),
+  });
 });
 
-router.get("/profile", isLoggedIn, function (req, res, next) {
-  console.log(req.user);
-  res.render("profile", { user: req.user });
+router.get("/profile", isLoggedIn, async function (req, res, next) {
+  try {
+    // Populate posts without using execPopulate()
+    await req.user.populate("posts");
+
+    res.render("profile", {
+      user: req.user,
+      isAuthenticated: req.isAuthenticated(),
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Error fetching user data");
+  }
 });
 
 router.post("/register", function (req, res) {
@@ -71,7 +88,7 @@ router.post(
     User.findByIdAndUpdate(
       req.user._id,
       { profilePicture: `/images/uploads/${req.file.filename}` },
-      { new: true } 
+      { new: true }
     )
       .then((updatedUser) => {
         console.log("User updated:", updatedUser);
@@ -81,6 +98,31 @@ router.post(
         console.error("Error updating user:", err);
         res.status(500).send("Error updating profile picture");
       });
+  }
+);
+
+router.get("/add", function (req, res, next) {
+  res.render("add", {
+    isAuthenticated: req.isAuthenticated(),
+  });
+});
+
+router.post(
+  "/add",
+  isLoggedIn,
+  upload.single("image"),
+  async function (req, res) {
+    const { title, image, description } = req.body;
+    const user = req.user;
+    const post = await Post.create({
+      title,
+      image: `/images/uploads/${req.file.filename}`,
+      description,
+      user,
+    });
+    user.posts.push(post._id);
+    await user.save();
+    res.redirect("/profile");
   }
 );
 
