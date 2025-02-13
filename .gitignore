@@ -47,3 +47,7 @@ coverage/
 public/images/uploads/*.jpg
 public/images/uploads/*.png
 public/images/uploads/*.jpeg
+public/images/uploads/*.gif
+public/images/uploads/*.svg
+public/images/uploads/*.webp
+public/images/uploads/*.ico
