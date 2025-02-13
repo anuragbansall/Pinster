@@ -71,7 +71,7 @@ router.post(
     User.findByIdAndUpdate(
       req.user._id,
       { profilePicture: `/images/uploads/${req.file.filename}` },
-      { new: true }
+      { new: true } 
     )
       .then((updatedUser) => {
         console.log("User updated:", updatedUser);

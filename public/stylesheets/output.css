@@ -1304,6 +1304,9 @@
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
   .space-y-reverse {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 1;
@@ -1564,6 +1567,9 @@
   .bg-zinc-300 {
     background-color: var(--color-zinc-300);
   }
+  .bg-zinc-900 {
+    background-color: var(--color-zinc-900);
+  }
   .-bg-conic {
     --tw-gradient-position: in oklab;
     background-image: conic-gradient(var(--tw-gradient-stops));
@@ -1768,6 +1774,9 @@
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
+  }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
   }
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
