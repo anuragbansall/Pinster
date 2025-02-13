@@ -44,4 +44,4 @@ coverage/
 *.swo
 
 # Public Uploads
-./public/images/uploads/
+/public/images/uploads/
