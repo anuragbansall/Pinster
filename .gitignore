@@ -43,5 +43,7 @@ coverage/
 *.swp
 *.swo
 
-# Public Uploads
-/public/images/uploads/
+# Ignore images in the uploads folder
+public/images/uploads/*.jpg
+public/images/uploads/*.png
+public/images/uploads/*.jpeg
