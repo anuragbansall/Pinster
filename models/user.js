@@ -9,7 +9,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    lowercase: true,
   },
   name: {
     type: String,
@@ -19,7 +18,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    lowercase: true,
   },
   password: {
     type: String,

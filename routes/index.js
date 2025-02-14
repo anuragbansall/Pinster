@@ -18,6 +18,7 @@ router.get("/", async function (req, res, next) {
 router.get("/login", function (req, res, next) {
   res.render("login", {
     isAuthenticated: req.isAuthenticated(),
+    message: req.flash("error"),
   });
 });
 
@@ -63,16 +64,21 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/profile",
     failureRedirect: "/login",
+    failureFlash: true,
   })
 );
 
 router.get("/logout", function (req, res, next) {
   req.logout(function (err) {
     if (err) {
-      return next(err);
-    } else {
-      res.redirect("/");
+      return next(err); // Handle any errors during logout
     }
+    req.session.destroy(function (err) {
+      if (err) {
+        return next(err); // Handle session destruction error
+      }
+      res.redirect("/"); // Redirect to homepage after logout
+    });
   });
 });
 

@@ -11,9 +11,13 @@ require("dotenv").config();
 var indexRouter = require("./routes/index");
 const User = require("./models/user");
 
+const flash = require("connect-flash");
+
 passport.use(new localStrategy(User.authenticate()));
 
 var app = express();
+
+app.use(flash());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -23,7 +27,8 @@ app.use(
   expressSession({
     secret: "pinster-key",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
   })
 );
 
@@ -35,7 +40,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
